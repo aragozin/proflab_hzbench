@@ -2,11 +2,14 @@ package info.ragozin.perflab.hazelagg;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @SuppressWarnings("serial")
 public class SliceKey implements Serializable {
-    
+
     public static final SliceKey ANY = new SliceKey(null, null, null);
-    
+
     private String book;
     private String underlaying;
     private String contract;
@@ -22,11 +25,12 @@ public class SliceKey implements Serializable {
     public static SliceKey underlaying(String underlaying) {
         return new SliceKey(null, underlaying, null);
     }
-    
+
     SliceKey() {
     }
-    
-    public SliceKey(String book, String underlaying, String contract) {
+
+    @JsonCreator
+    public SliceKey(@JsonProperty("book") String book, @JsonProperty("underlaying") String underlaying, @JsonProperty("contract") String contract) {
         this.book = book;
         this.underlaying = underlaying;
         this.contract = contract;
@@ -81,13 +85,26 @@ public class SliceKey implements Serializable {
         return true;
     }
 
+    public static SliceKey fromString(String text) {
+        if ("ANY".equals(text)) {
+            return new SliceKey(null, null, null);
+        } else {
+            String[] parts = text.split("[|]");
+            assert parts.length == 3;
+            return new SliceKey(
+                    "*".equals(parts[0]) ? null : parts[0],
+                    "*".equals(parts[1]) ? null : parts[1],
+                    "*".equals(parts[2]) ? null : parts[2]);
+        }
+    }
+
     @Override
     public String toString() {
-        
+
         if (book == null && underlaying == null && contract == null) {
             return "ANY";
         }
-        
+
         StringBuilder sb = new StringBuilder();
         if (book != null) {
             sb.append(book);
@@ -95,25 +112,21 @@ public class SliceKey implements Serializable {
         else {
             sb.append("*");
         }
+        sb.append('|');
         if (underlaying != null) {
-            if (sb.length() > 0) {
-                sb.append('|');
-            }
             sb.append(underlaying);
         }
         else {
             sb.append("*");
         }
+        sb.append('|');
         if (contract != null) {
-            if (sb.length() > 0) {
-                sb.append('|');
-            }
-            sb.append(contract);            
+            sb.append(contract);
         }
         else {
             sb.append("*");
-        }        
-        
+        }
+
         return sb.toString();
     }
 }

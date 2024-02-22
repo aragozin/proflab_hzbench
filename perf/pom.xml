@@ -53,6 +53,12 @@
         </dependency>
 
         <dependency>
+           <groupId>${project.groupId}</groupId>
+           <artifactId>hzbench-demo-gridapp</artifactId>
+           <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
