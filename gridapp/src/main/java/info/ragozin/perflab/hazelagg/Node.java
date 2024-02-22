@@ -9,8 +9,6 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 
-import info.ragozin.perflab.hazelagg.kryo.KryoConfigurer;
-
 public class Node {
 
     final Config cfg;
@@ -23,7 +21,7 @@ public class Node {
         } else {
             cfg = new FileSystemXmlConfig("node-conf.xml");
         }
-        KryoConfigurer.configure(cfg);
+//        KryoConfigurer.configure(cfg);
 
         node = Hazelcast.newHazelcastInstance(cfg);
 
@@ -32,7 +30,7 @@ public class Node {
 
     public Node(File config) throws FileNotFoundException {
         cfg = new FileSystemXmlConfig(config);
-        KryoConfigurer.configure(cfg);
+//        KryoConfigurer.configure(cfg);
 
         node = Hazelcast.newHazelcastInstance(cfg);
 
