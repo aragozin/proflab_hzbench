@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>info.ragozin.proflab</groupId>
+  <artifactId>proflab-utils</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20240222003011</lastUpdated>
+  </versioning>
+</metadata>

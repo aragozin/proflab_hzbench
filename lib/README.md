@@ -1,0 +1,1 @@
+﻿Some shared libaries not published to Maven central are placed here.
