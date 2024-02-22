@@ -1,13 +1,16 @@
 Hazelcast demo application
-====
+==========================
 
 This is demo appliction for "Java Profilers" training course.
 
-Demo start 3 nodes locally and implement simple map/reduce job.
+Demo include 3+1 Hazelcast cluster and perform simple map/reduce operation.
 
-Run benchmark
-----
+Run demo
+--------
 
-Use `mvn -P bench test` to run benchmark.
+ * `mvn -P run test` to start cluster
+ * `mvn -P run_n_load test` to start cluster and load script
+ * `mvn -P stop test` stop demo process
+ * `mvn clean` would also clean demo processes
 
-Execution time for each map/reduce job is printed to system out.
+Performance logs are under `var/loadgen/logs/console.out`

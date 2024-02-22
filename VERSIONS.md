@@ -1,6 +1,7 @@
 Versions of sample
 ====
 
- - `git checkout hz_demo_step_1` - initial version
- - `git checkout hz_demo_step_2`
- - `git checkout hz_demo_step_3`
+ - `git checkout hzbench_step1` - initial version
+ - `git checkout hzbench_step2`
+ - `git checkout hzbench_step3`
+ - `git checkout hzbench_step4`
