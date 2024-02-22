@@ -53,6 +53,11 @@ public class HzService extends GenericStarter {
         Node node = new Node(DemoInitializer.file("gridapp/node-conf-lite.xml"));
         Service serv = new Service(node);
         server = new Server(serv);
-        server.start(DemoInitializer.propAsInt("hzdemo.http.port", 8080));
+        try {
+        	server.start(DemoInitializer.propAsInt("hzdemo.http.port", 8080));
+        } catch (Exception e) {
+        	// do not hang around
+        	System.exit(1);
+        }
     }
 }
